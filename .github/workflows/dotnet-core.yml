@@ -1,4 +1,4 @@
-name: Setup .NET Core SDK
+name: Make Nuget Package
 on: 
   push:
     branches: 
