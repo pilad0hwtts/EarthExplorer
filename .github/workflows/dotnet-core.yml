@@ -1,0 +1,27 @@
+name: Make Nuget Package
+on: 
+  push:
+    branches: 
+      - master
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      # Authenticates packages to push to GPR
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x' # SDK Version to use.
+          source-url: https://nuget.pkg.github.com/pilad0hwtts/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Generate NuGet package
+        run:           
+          dotnet pack -c Release -o out  
+      - name: Publish the package to GPR
+        run: dotnet nuget push out/*.nupkg --skip-duplicate --no-symbols true
