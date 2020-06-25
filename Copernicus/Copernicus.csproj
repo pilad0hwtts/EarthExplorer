@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>EarthExplorer.Copernicus</PackageId>
+    <Version>0.0.1</Version>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>pilad0hwtts</Authors>
+    <Company>TI</Company>
+    <RepositoryUrl>https://github.com/pilad0hwtts/EarthExplorer</RepositoryUrl>
+  </PropertyGroup>
+
 </Project>
