@@ -25,5 +25,6 @@ jobs:
           cd EarthExplorer
           dotnet pack -c Release -o out  
       - name: Publish the package to GPR
-        run:          
+        run: |          
+          cd EarthExplorer       
           dotnet nuget push out/*.nupkg --skip-duplicate --no-symbols true
