@@ -3,8 +3,8 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="Copernicus\Copernicus.csproj" />
-    <ProjectReference Include="LandsatAws\LandsatAws.csproj" />
+    <ProjectReference Include="..\Copernicus\Copernicus.csproj" />
+    <ProjectReference Include="..\LandsatAws\LandsatAws.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
