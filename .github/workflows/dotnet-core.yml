@@ -21,9 +21,9 @@ jobs:
         env:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Generate NuGet package
-        run:          
+        run: |          
+          cd EarthExplorer
           dotnet pack EarthExplorer -c Release -o out  
       - name: Publish the package to GPR
-        run: |
-          cd EarthExplorer
+        run:          
           dotnet nuget push out/*.nupkg --skip-duplicate --no-symbols true
