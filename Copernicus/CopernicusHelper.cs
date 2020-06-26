@@ -126,7 +126,7 @@ namespace EarthExplorer.Copernicus
         public static Product BuildProduct(XElement entry_)
         {            
             var uuid = Guid.Parse(entry_.Element("id").Value);
-            var nameWords = entry_.Element("title").Value.Split(" ");
+            var nameWords = entry_.Element("title").Value.Split("_");
             var tile = new Tile(nameWords.SkipLast(1).Last());
             
             PlatformName platform;
