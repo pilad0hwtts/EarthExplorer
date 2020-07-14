@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Linq;
+using CsvHelper;
 
 namespace EarthExplorer.LandsatAws
 {
@@ -24,7 +25,7 @@ namespace EarthExplorer.LandsatAws
 
         }
 
-        public static IEnumerable<Landsat8CsvInfo> GetLastLandsat8()
+        public static Landsat8CsvInfo[] GetLastLandsat8()
         {
             string[] codes = { "132023", "132024", "137022", "137023", "136022", "136023", "134023", "134024", "137021", "137022", "137023", "136021", "136022", "136023", "134021", "134022", "134023", "136021", "136022", "137020", "137021", "137022", "139019", "139020", "139021", "137022", "137023", "139021", "139022" };
             using (var client = new WebClient())
@@ -36,8 +37,9 @@ namespace EarthExplorer.LandsatAws
                         using (var reader = new System.IO.StreamReader(gzipStream))
                         {
                             using (var csvStream = new CsvHelper.CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
-                            {                                
-                                return csvStream.GetRecords<Landsat8CsvInfo>().Where(c => c.cloudCover < 50 && c.acquisitionDate > DateTime.Now.AddDays(-120) && codes.Contains(c.path.ToString("D3") + c.row.ToString("D3")));
+                            {     
+                                return csvStream.GetRecords<Landsat8CsvInfo>().ToArray()                           ;
+                                //return csvStream.GetRecords<Landsat8CsvInfo>().Where(c => c.cloudCover < 50 && c.acquisitionDate > DateTime.Now.AddDays(-120) && codes.Contains(c.path.ToString("D3") + c.row.ToString("D3")));
                             }
                         }
                     }
