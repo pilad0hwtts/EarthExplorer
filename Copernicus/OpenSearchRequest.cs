@@ -15,11 +15,17 @@ namespace EarthExplorer.Copernicus {
         public int start = 0;
         public int rows = 100;
         public PlatformName platform;
+        public Sentinel_2.ProductType productType = Sentinel_2.ProductType.S2MSI2A; 
 
         //TODO: All platform supporting
         public override string ToString()
         {
-            string output = "/dhus/search?q=(producttype:S2MSI2A AND ";
+            string output = "";
+            switch (productType) {                
+                case Sentinel_2.ProductType.S2MS2Ap: output = "/dhus/search?q=(producttype:S2MS2Ap AND "; break;
+                case Sentinel_2.ProductType.S2MSI1C: output = "/dhus/search?q=(producttype:S2MSI1C AND "; break;
+                case Sentinel_2.ProductType.S2MSI2A: output = "/dhus/search?q=(producttype:S2MSI2A AND "; break;
+            }
             switch (platform)
             {
                 case PlatformName.Sentinel_2: output += "platformname:Sentinel-2 AND "; break;

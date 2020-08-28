@@ -6,7 +6,7 @@
 
   <PropertyGroup>
     <PackageId>EarthExplorer.Copernicus</PackageId>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>pilad0hwtts</Authors>
     <Company>TI</Company>
