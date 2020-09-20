@@ -9,7 +9,7 @@ using EarthExplorer.Copernicus;
 
 namespace EarthExplorer.Copernicus
 {
-    public static class Helper
+    internal static class Helper
     {
 
         public static WebClient SetupToCopernicus(this WebClient client, string login, string pass)
@@ -46,9 +46,7 @@ namespace EarthExplorer.Copernicus
         public static IEnumerable<XElement> LoadAllEntries(WebClient client, OpenSearchRequest request) => LoadAllEntries(client, request.ToString());
 
         public static IEnumerable<XElement> LoadAllEntries(WebClient client, String request)
-        {
-            
-            
+        {          
             IEnumerable<XElement> result = new List<XElement>();
             
             var response = client.DownloadString(request + "&start=0&rows=100");
