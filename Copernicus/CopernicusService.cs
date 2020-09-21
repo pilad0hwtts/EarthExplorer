@@ -53,7 +53,7 @@ namespace EarthExplorer.Copernicus {
 
                 for (int current = itemsPerPage; current < totalResults; current += itemsPerPage) {
                     request.start = current;
-                    response = GetAsString(new Uri(request.ToString()));
+                    response = GetAsString(new Uri("https://scihub.copernicus.eu/" + request.ToString()));
                     result = result.Concat(parseEntriesAlias(response));
                 }
             } catch (Exception ex) {
